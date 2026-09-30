@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Syne', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: radial-gradient(circle at 72% 48%, #ec5900 0%, #cf4600 25%, #a83300 52%, #7c2000 80%, #521300 100%);
+    background-color: #a83300;
+    color: #fff7ed;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Custom cinematic glow and atmosphere */
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+@keyframes steam-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.9);
+  }
+  50% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px) scale(1.15);
+  }
+}
+
+@keyframes warm-pulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.04);
+  }
+}
+
+.animate-subtle-float {
+  animation: subtle-float 6.5s ease-in-out infinite;
+}
+
+.animate-steam-1 {
+  animation: steam-rise 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-steam-2 {
+  animation: steam-rise 5.6s cubic-bezier(0.4, 0, 0.2, 1) 2.2s infinite;
+}
+
+.animate-warm-pulse {
+  animation: warm-pulse 6s ease-in-out infinite;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-subtle-float,
+  .animate-steam-1,
+  .animate-steam-2,
+  .animate-warm-pulse {
+    animation: none !important;
+  }
+}
